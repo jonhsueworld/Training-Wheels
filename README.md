@@ -1,4 +1,4 @@
-# Complete Vue.js 3 (Inc Options + Composition API, Vue Router and Vuex)
+# Training using Vue.js 3 (Inc Options + Composition API, Vue Router and Vuex)
 
 Hi! This is a training project following Lachlan Miller's Vue.js course found at:
   https://github.com/lmiller1990/complete-vuejs
