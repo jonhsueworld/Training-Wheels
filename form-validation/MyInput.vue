@@ -1,14 +1,16 @@
 <template>
     <div class="label">
         <label :for="name">{{ name }}</label>
+
+        <input 
+            :id="name" 
+            :value="value"
+            :type ="type"
+            @input="input"
+        />
+        
         <div class="error">{{ error }}</div>
     </div>
-    <input 
-        :id="name" 
-        :value="value"
-        :type ="type"
-        @input="input"
-    />
 </template>
 
 <script>
@@ -29,8 +31,6 @@ export default {
             required: true
         },
         rules: {
-            //min: number
-            //required: boolean
             type: Object,
             default: {}
         },
@@ -43,7 +43,7 @@ export default {
         this.$emit('update', {
             name: this.name.toLowerCase(),
             value: this.value,
-            error: this.validate(this.value)
+            error: this.validate(true)
         })
         
     },
@@ -63,7 +63,7 @@ export default {
             }
 
             if (this.rules.min && value.length < this.rules.min) {
-                return `The minimum length is ${this.rules.min}.`
+                return `Minimum length is ${this.rules.min}.`
             }
         }
     }
@@ -71,24 +71,31 @@ export default {
 </script>
 
 <style scoped>
-.input-wrapper {
-    display: flex;
-    flex-direction: column;
-}
 .error {
     color: red;
+    margin: 10px auto;
+    text-align: right;
+    font-weight: normal;
 }
 .label {
-    display: flex;
-    justify-content: space-between;
+    display: block;
+    margin: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
 }
 input {
+    display: block;
+    width: 300px;
     background: none;
     color: black;
     border: 1px solid silver;
     border-radius: 5px;
     padding: 10px;
-    margin: 5px 0;
+    margin: 5px;
     font-size: 16px;
+    text-align: center;
+    
 }
 </style>

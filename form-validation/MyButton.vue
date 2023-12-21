@@ -3,7 +3,7 @@
         :style="{ background, color }"
         :disabled="disabled"
     >
-        Button
+        Login
     </button>
 </template>
 
@@ -22,6 +22,8 @@ button:disabled {
     opacity: 0.5;
 }
 button {
+    display: block;
+    width: 300px;
     background: none;
     color: black;
     border: none;
@@ -29,8 +31,9 @@ button {
     padding: 10px 40px;
     font-size: 16px;
     cursor: pointer;
+    margin: auto;
 }
 button:hover {
-    filter: brightness(125%)
+    filter: brightness(200%)
 }
 </style>
