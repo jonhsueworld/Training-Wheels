@@ -1,6 +1,7 @@
-# Complete Vue.js 3 (Inc Options + Composition API, Vue Router and Vuex)
+# Training using Vue.js 3 (Inc Options + Composition API, Vue Router and Vuex)
 
-Hi! Welcome to my course on Vue.js 3. Let's have a great time learning Vue.js 3 🎉.
+Hi! This is a training project following Lachlan Miller's Vue.js course found at:
+  https://github.com/lmiller1990/complete-vuejs
 
 ## Installation
 
@@ -11,7 +12,7 @@ I am using:
 
 You can use whatever version, but I have only tested with those versions. Don't use yarn 2, it's really different to yarn 1.
 
-`master` contains the completed code. Run projects with:
+Run projects with:
 
 ```
 yarn vite --config vite.config.js <project>
@@ -19,7 +20,7 @@ yarn vite --config vite.config.js <project>
 
 ## Getting Started
 
-Either clone master and `yarn install`, or start with `getting-started` and:
+Either clone main and `yarn install`, or start with `getting-started` and:
 
 ```sh
 yarn add vue@3.0.7
@@ -28,7 +29,7 @@ yarn add vite@2.1.1 --dev
 
 ## Fundamentals #1: Options API
 
-Learn about the Options API and the basics of Vue.js.
+Options API and the basics of Vue.js.
 
 ## Project #1: Form Validation
 
@@ -50,7 +51,7 @@ Learn about the Options API and the basics of Vue.js.
 
 ## Fundamentals #2: Composition API
 
-Learn about Vue 3's most exciting feature, the Composition API.
+Vue 3's most exciting feature, the Composition API.
 
 - ref
 - reactive
@@ -72,7 +73,7 @@ Build a project using the Composition API to display posts and filter via hashta
 
 ## Fundamentals #3: Vue Router
 
-Learn about Vue Router for large, multi-page apps with client side routing - no refreshes.
+Vue Router used for large, multi-page apps with client side routing - no refreshes.
 
 - composition and options API usage
 - highly complex applications
@@ -80,7 +81,7 @@ Learn about Vue Router for large, multi-page apps with client side routing - no 
 
 ## Fundamentals #4: Vuex
 
-Learn Vuex, the official state management solution for Vue.
+Vuex, the official state management solution for Vue.
 
 - the flux pattern for state management
 - problem: we need the state everywhere
