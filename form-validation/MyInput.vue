@@ -2,7 +2,10 @@
     <div class="label">
         <label :for="name">{{ name }}</label>
 
-        <input 
+
+    </div>
+
+    <input 
             :id="name" 
             :value="value"
             :type ="type"
@@ -10,7 +13,6 @@
         />
         
         <div class="error">{{ error }}</div>
-    </div>
 </template>
 
 <script>
@@ -73,27 +75,25 @@ export default {
 <style scoped>
 .error {
     color: red;
-    margin: 10px auto;
+    margin-top: 5px;
+    height: 15px;
     text-align: right;
     font-weight: normal;
 }
 .label {
     display: block;
-    margin: 10px;
-    margin-bottom: 30px;
+    margin: 10px 0;
     text-align: left;
-    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 input {
     display: block;
-    width: 300px;
+    width: 100%;
     background: none;
     color: black;
     border: 1px solid silver;
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
+    padding: 10px 0;
     font-size: 16px;
     text-align: center;
     

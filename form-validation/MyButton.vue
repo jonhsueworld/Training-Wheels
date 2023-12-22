@@ -3,7 +3,7 @@
         :style="{ background, color }"
         :disabled="disabled"
     >
-        Login
+        Log in
     </button>
 </template>
 
@@ -18,12 +18,9 @@ export default {
 </script>
 
 <style scoped>
-button:disabled {
-    opacity: 0.5;
-}
 button {
     display: block;
-    width: 300px;
+    width: 100%;
     background: none;
     color: black;
     border: none;
@@ -36,4 +33,10 @@ button {
 button:hover {
     filter: brightness(200%)
 }
+button:disabled {
+    opacity: 0.5;
+    filter: brightness(100%);
+    cursor: not-allowed;
+}
+
 </style>
