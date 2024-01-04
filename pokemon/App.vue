@@ -1,64 +1,23 @@
 <template>
-    <div class="cards">
-        <card
-            v-for="pokemon in pokemons"
-            :key="pokemon.id"
-            @click="fetchEvolutions(pokemon)"
-            :class="{opace: pokemon.id !== selectedId}"
-            class="card"
-        >
+    <pokemon-cards 
+        :pokemons="pokemons"
+        @chosen="fetchEvolutions"
+        :selectedId="selectedId"
+    />
 
-            <template v-slot:title>
-                {{ pokemon.name }}
-            </template>
-
-            <template v-slot:content>
-                <img :src="pokemon.sprite">
-            </template>
-
-            <template v-slot:description>
-                <div v-for="type in pokemon.types"
-                    :key="type"
-            >
-                    {{type}}
-                </div>
-            </template>
-        </card>
-    </div>
-
-    <div class="cards">
-        <card
-            v-for="pokemon in evolutions"
-            :key="pokemon.id"
-        >
-
-            <template v-slot:title>
-                {{ pokemon.name }}
-            </template>
-
-            <template v-slot:content>
-                <img :src="pokemon.sprite">
-            </template>
-
-            <template v-slot:description>
-                <div v-for="type in pokemon.types"
-                    :key="type"
-            >
-                    {{type}}
-                </div>
-            </template>
-        </card>
-    </div>
+    <pokemon-cards 
+        :pokemons="evolutions"
+    />
 </template>
 
 <script>
-    import Card from './Card.vue'
+    import PokemonCards from './PokemonCards.vue'
     const api = 'https://pokeapi.co/api/v2/pokemon'
     const IDS = [1, 4, 7]
 
     export default {
         components: {
-            Card
+            PokemonCards
         },
 
         data() {
@@ -103,19 +62,5 @@
 </script>
 
 <style scoped>
-    .opace {
-        opacity: 0.5;
-    }
-
-    .card:hover {
-        opacity: 1.0;
-    }
-
-    .cards {
-        display: flex;
-    }
-
-    img {
-        width: 100%;
-    }
+    
 </style>
