@@ -13,7 +13,7 @@
 <script>
     import PokemonCards from './PokemonCards.vue'
     const api = 'https://pokeapi.co/api/v2/pokemon'
-    const IDS = [1, 4, 7]
+    const IDS = [1]
 
     export default {
         components: {
@@ -32,10 +32,6 @@
             this.pokemons = await this.fetchData(IDS)
         },
 
-        mounted() {
-
-        },
-
         methods: {
             async fetchEvolutions(pokemon) {
                 this.evolutions = await this.fetchData([pokemon.id + 1, pokemon.id + 2])
@@ -43,18 +39,29 @@
             },
             async fetchData(ids) {
                 const responses = await Promise.all(
-                    ids.map ( ids => window.fetch(`${api}/${ids}`))
+                    ids.map ( ids => window.fetch(`${api}/${ids}/`))
                 )
                 const json = await Promise.all(
                     responses.map(data => data.json())
                 )
 
-                return json.map(datum => ({
+                let pkmn = json.map(datum => ({
                     id: datum.id, 
                     name: datum.name,
                     sprite: datum.sprites.other['official-artwork'].front_default,
-                    types: datum.types.map(type => type.type.name)
+                    types: datum.types.map(type => type.type.name),
+                    genus: null,
+                    height: datum.height/10,
+                    kgs: datum.weight/10
                 }))
+
+                //responses = await Promise.all(
+                //    ids.map ( ids => window.fetch(`${api}-species/${ids}/`))
+                //)
+
+                pkmn[0].genus = json[0].genus
+
+                return pkmn
             }
         }
 
@@ -62,5 +69,4 @@
 </script>
 
 <style scoped>
-    
 </style>

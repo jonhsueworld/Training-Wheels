@@ -10,12 +10,16 @@
             class="card"
         >
 
+            <template v-slot:content>
+                <img :src="pokemon.sprite">
+            </template>
+
             <template v-slot:title>
                 {{ pokemon.name }}
             </template>
 
-            <template v-slot:content>
-                <img :src="pokemon.sprite">
+            <template v-slot:index>
+                {{ pokemon.id }}
             </template>
 
             <template v-slot:description>
@@ -24,6 +28,18 @@
             >
                     {{type}}
                 </div>
+            </template>
+
+            <template v-slot:species>
+                {{ pokemon.genus }}
+            </template>
+
+            <template v-slot:size>
+                {{ pokemon.height }}
+            </template>
+
+            <template v-slot:weight>
+                {{ pokemon.kgs }}
             </template>
         </card>
     </div>
