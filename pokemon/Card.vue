@@ -1,43 +1,62 @@
 <template>
-    <tbody class="card">
+    <table class="card">
+
         <tr>
-            <div class ="content">
-                <h1>Picture</h1>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Type</th>
+        </tr>    
+
+        <tr>
+            <td class ="content" rowspan="3">
                 <slot name="content"/>
-            </div>
+            </td>
 
             <td class ="title">
-                <h1>Name</h1>
-                <slot name="title"/>
+                <b>English:</b>&emsp;<slot name="title"/>
             </td>
 
             <td class ="index">
-                <h1>Number</h1>
-                <slot name="index"/>
+                <b>Pokedex:</b>&emsp;&emsp;#<slot name="index"/>
             </td>
 
-            <td class ="description">
-                <h1>Type</h1>
+            <td class ="description" align ="center">
                 <slot name="description"/>
             </td>
+
         </tr>
+
+        <tr>
+            <th>Classification</th>
+            <th>Height</th>
+            <th>Weight</th>
+        </tr>    
 
         <tr>
             <td class ="species">
                 <slot name="species"/>
             </td>
-
+            
             <td class ="size">
-                <h1>Height</h1>
-                <slot name="size"/>
+                <slot name="size"/><a>m</a>
             </td>
 
             <td class ="weight">
-                <h1>Weight</h1>
-                <slot name="weight"/>
+                <slot name="weight"/><a>kg</a>
+            </td>      
+        </tr>
+
+        <tr>
+            <th colspan="4">Evolutionary Chain</th>
+        </tr>  
+
+        <tr>
+            <td class = "evolutions" colspan="4">
+                <slot name="evolutions"/>
             </td>
         </tr>
-    </tbody>
+    </table>
 </template>
 
 <script>
@@ -47,57 +66,56 @@
 
 <style scoped>
     .card {
-        justify-content: center;
         position: absolute;
-        width: 100%;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: 5px #383838;
-        border-radius: 8px;
-        margin: 0 5px;
         cursor: pointer;
         transition: 0.2s;
-        background-color: #404040;
+        background-color: #383838;
+        border-radius: 3px;
+        width: 85%;
     }
 
-    h1 {
+    th {
         background-color: #507C36;
         font-size: 1em;
         height: 25px;
         text-align: center;
+        border-radius: 3px;
+        color: white;
+        font-family: 'Verdana';
+        width: 20%;
+        border-left: 3px solid #383838;
     }
 
-    .title, .content, .description, .index, .species, .size, .weight {
-        padding: 2px #383838;
+    .title, .description, .index, .species, .size, .weight{
         text-transform: capitalize;
         color: white;
-        font-family: 'Open Sans', sans-serif;
-        border: 1px #383838;
+        font-family: 'Verdana';
+        background-color: #404040;
+        border-left: 3px solid #383838;
+        text-indent: 7px;
     }
 
     .content {
-        max-width: 350px;
+        width: 40%;
+        background-color: #404040;
+        text-align: center;
     }
 
-    .title {
+    .title, .description, .index {
         width: 20%;
     }
 
-    .description {
+    .size, .weight {
         width: 20%;
     }
 
-    .index {
-        width: 20%;
-    }
-
-    .size {
-        width: 20%;
-    }
-
-    .weight {
-        width: 20%;
+    .evolutions {
+        background-color: #404040;
+        text-align: center;
+        padding-top: 7px;
     }
 
     .card:hover {

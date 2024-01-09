@@ -1,4 +1,5 @@
 <template>
+    <form name="nav">x </form>
     <div class="cards">
         <card
             v-for="pokemon in pokemons"
@@ -30,9 +31,9 @@
                 </div>
             </template>
 
-            <template v-slot:species>
+            <!--<template v-slot:species>
                 {{ pokemon.genus }}
-            </template>
+            </template>-->
 
             <template v-slot:size>
                 {{ pokemon.height }}
@@ -40,6 +41,10 @@
 
             <template v-slot:weight>
                 {{ pokemon.kgs }}
+            </template>
+
+            <template v-slot:evolutions>
+                <img class="evolve" :src="pokemon.sprite">
             </template>
         </card>
     </div>
@@ -78,11 +83,14 @@
         opacity: 1.0;
     }
 
-    .cards {
-        display: flex;
+    img {
+        width: 50%;
     }
 
-    img {
-        width: 100%;
+    .evolve {
+        width: 5%;
+        background-color: #454545;
+        border: 1px solid #383838;
+        border-radius: 25px;
     }
 </style>

@@ -55,11 +55,11 @@
                     kgs: datum.weight/10
                 }))
 
-                //responses = await Promise.all(
-                //    ids.map ( ids => window.fetch(`${api}-species/${ids}/`))
-                //)
+                const r = await Promise.all(
+                    ids.map ( ids => window.fetch(`${api}-species/${ids}/`))
+                )
 
-                pkmn[0].genus = json[0].genus
+                pkmn[0].genus = ids[0].genus
 
                 return pkmn
             }
