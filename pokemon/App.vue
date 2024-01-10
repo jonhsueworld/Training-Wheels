@@ -37,7 +37,8 @@
                 this.evolutions = await this.fetchData([pokemon.id + 1, pokemon.id + 2])
                 this.selectedId = pokemon.id
             },
-            async fetchData(ids) {
+
+            async fetchAPI(api, ids){
                 const responses = await Promise.all(
                     ids.map ( ids => window.fetch(`${api}/${ids}/`))
                 )
@@ -45,21 +46,28 @@
                     responses.map(data => data.json())
                 )
 
-                let pkmn = json.map(datum => ({
+                return json
+            },
+            async fetchData(ids) {
+                let data;
+                let pkmn
+
+                data = await this.fetchAPI(api, ids)
+                pkmn = data.map(datum => ({
                     id: datum.id, 
                     name: datum.name,
                     sprite: datum.sprites.other['official-artwork'].front_default,
                     types: datum.types.map(type => type.type.name),
-                    genus: null,
+                    genus: "",
                     height: datum.height/10,
                     kgs: datum.weight/10
                 }))
+                console.log(pkmn)
 
-                const r = await Promise.all(
-                    ids.map ( ids => window.fetch(`${api}-species/${ids}/`))
-                )
-
-                pkmn[0].genus = ids[0].genus
+                data = await this.fetchAPI(`${api}-species`, ids)                
+                for(let p = 0; p<pkmn.length; p++) {
+                    pkmn[p].genus = data[p].genera[7].genus;
+                }
 
                 return pkmn
             }

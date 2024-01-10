@@ -31,9 +31,9 @@
                 </div>
             </template>
 
-            <!--<template v-slot:species>
+            <template v-slot:species>
                 {{ pokemon.genus }}
-            </template>-->
+            </template>
 
             <template v-slot:size>
                 {{ pokemon.height }}
