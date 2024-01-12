@@ -1,10 +1,14 @@
 <template>
     <table class="card">
+        <tr  class="label">
+            <slot name="icon"/>
+            #000<slot name="index"/> <slot name="title"/>
+        </tr>
 
         <tr>
             <th>Picture</th>
             <th>Name</th>
-            <th>Number</th>
+            <th>Pokedex</th>
             <th>Type</th>
         </tr>    
 
@@ -18,13 +22,12 @@
             </td>
 
             <td class ="index">
-                <b>Pokedex:</b>&emsp;&emsp;#<slot name="index"/>
+                <b>National:</b>&emsp;#000<slot name="index"/>
             </td>
 
             <td class ="description" align ="center">
                 <slot name="description"/>
             </td>
-
         </tr>
 
         <tr>
@@ -70,18 +73,17 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        cursor: pointer;
         transition: 0.2s;
         background-color: #383838;
         border-radius: 3px;
         width: 85%;
+        text-align: center;
     }
 
     th {
         background-color: #507C36;
         font-size: 1em;
         height: 25px;
-        text-align: center;
         border-radius: 3px;
         color: white;
         font-family: 'Verdana';
@@ -92,16 +94,23 @@
     .title, .description, .index, .species, .size, .weight{
         text-transform: capitalize;
         color: white;
-        font-family: 'Verdana';
+        font-family: Verdana;
         background-color: #404040;
         border-left: 3px solid #383838;
-        text-indent: 7px;
+    }
+
+    .label {
+        text-transform: capitalize;
+        color: white;
+        text-align: left;
+        font-weight: bold;
+        font-family: Verdana;
+        font-size: 20px;
     }
 
     .content {
         width: 40%;
         background-color: #404040;
-        text-align: center;
     }
 
     .title, .description, .index {
@@ -114,7 +123,6 @@
 
     .evolutions {
         background-color: #404040;
-        text-align: center;
         padding-top: 7px;
     }
 

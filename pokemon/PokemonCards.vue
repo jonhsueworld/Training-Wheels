@@ -1,18 +1,22 @@
 <template>
-    <form name="nav">x </form>
     <div class="cards">
         <card
-            v-for="pokemon in pokemons"
-            :key="pokemon.id"
-            @click="click(pokemon)"
-            :class="{ 
-                opace: selectedId && pokemon.id !== selectedId
-            }"
-            class="card"
+            v-if="pokemon"
         >
+            <template v-slot:evolutions>
+                <img class="evolve" :src="pokemon.artwork"
+                    v-for="(pokemon) in pokemons"
+                    :key="pokemon.id"
+                    @click="click(pokemon)"
+                >
+            </template>
+
+            <template v-slot:icon>
+                <img class="sprite" :src="pokemon.sprite">
+            </template>
 
             <template v-slot:content>
-                <img :src="pokemon.sprite">
+                <img :src="pokemon.artwork">
             </template>
 
             <template v-slot:title>
@@ -43,9 +47,6 @@
                 {{ pokemon.kgs }}
             </template>
 
-            <template v-slot:evolutions>
-                <img class="evolve" :src="pokemon.sprite">
-            </template>
         </card>
     </div>
 </template>
@@ -58,27 +59,41 @@
         },
 
         props: {
-            selectedId: {
-                type: Number,
-            },
             pokemons: {
                 type: Array,
                 default: []
             }
         },
+
+        data () {
+            return { 
+                pokemon: null
+            }
+        },
+
+        watch: {
+            pokemons: {
+                handler (newValue) {
+                    if (newValue && newValue.length > 0) {
+                        this.pokemon = this.pokemons[0]
+                    }
+                    else {
+                        this.pokemon = null
+                    }
+                },
+                deep: true
+            }
+        },
+
         methods: {
             click(pokemon) {
-                this.$emit('chosen', pokemon)
+                this.pokemon = pokemon
             }
         }
     }
 </script>
 
 <style scoped>
-    .opace {
-        opacity: 0.5;
-    }
-
     .card:hover {
         opacity: 1.0;
     }
@@ -92,5 +107,10 @@
         background-color: #454545;
         border: 1px solid #383838;
         border-radius: 25px;
+        cursor: pointer;
+    }
+
+    .sprite {
+        width: 5%;
     }
 </style>
