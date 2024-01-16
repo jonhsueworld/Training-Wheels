@@ -47,7 +47,6 @@
                 return json
             },
             async fetchData(ids) {
-                console.log(ids)
                 let data
                 let pkmn
 

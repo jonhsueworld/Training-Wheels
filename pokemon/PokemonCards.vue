@@ -111,6 +111,7 @@
     }
 
     .sprite {
-        width: 5%;
+        width: 60px;
+        height: 60px;
     }
 </style>
