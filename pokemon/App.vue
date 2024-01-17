@@ -46,6 +46,7 @@
 
                 return json
             },
+            
             async fetchData(ids) {
                 let data
                 let pkmn

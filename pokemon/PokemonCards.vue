@@ -94,10 +94,6 @@
 </script>
 
 <style scoped>
-    .card:hover {
-        opacity: 1.0;
-    }
-
     img {
         width: 50%;
     }

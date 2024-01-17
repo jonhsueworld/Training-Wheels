@@ -1,6 +1,6 @@
 <template>
     <table class="card">
-        <tr  class="label">
+        <tr class="label">
             <slot name="icon"/>
             #000<slot name="index"/> <slot name="title"/>
         </tr>
