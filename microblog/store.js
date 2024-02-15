@@ -10,7 +10,7 @@ class Store {
     })
   }
 
-  setHashtag(tag) {
+  setTag(tag) {
     this.state.currentTag = tag
   }
 
@@ -20,7 +20,7 @@ class Store {
     }
 
     return store.state.posts.filter(post => 
-      post.hashtags.includes(store.state.currentTag) || (post.content).toUpperCase().includes((store.state.currentTag).toUpperCase())
+      post.tags.includes(store.state.currentTag) || (post.content).toUpperCase().includes((store.state.currentTag).toUpperCase())
     )
   }
 
@@ -49,11 +49,11 @@ class Store {
             title: post.title,
             content: post.content,
             likes: post.likes,
-            hashtags: post.hashtags,
+            tags: post.tags,
             isLiked: post.isLiked
         }
     )
-    console.log(testPosts)
+    //console.log(testPosts)
   }
 
 }

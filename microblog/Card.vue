@@ -22,8 +22,8 @@ export default {
 <style scoped>
 .card {
   border-radius: 8px;
-  margin: 0 5px;
-  max-width: 200px;
+  margin: 0 10px;
+  max-width: 260px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -31,9 +31,7 @@ export default {
   padding: 16px;
   text-align: center;
 }
-.title, .content {
-  border-bottom: 1px solid silver;
-}
+
 .title {
   font-size: 1.25em;
 }

@@ -1,9 +1,9 @@
 <template>
   <div 
-    class="hashtag"
+    class="tag"
     @click="click"
   >
-    #{{ hashtag }}
+    #{{ tag }}
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import { store } from './store.js'
 
 export default {
   props: {
-    hashtag: {
+    tag: {
       type: String,
       required: true
     }
@@ -20,7 +20,7 @@ export default {
 
   setup(props) {
     const click = () => {
-      store.setHashtag(props.hashtag)
+      store.setTag(props.tag)
     }
 
     return {
@@ -31,11 +31,8 @@ export default {
 </script>
 
 <style scoped>
-.hashtag {
-  text-decoration: underline; 
-}
 
-.hashtag:hover {
+.tag:hover {
   color: cornflowerblue;
 }
 </style>

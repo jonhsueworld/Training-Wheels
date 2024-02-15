@@ -4,7 +4,7 @@ export let testPosts = [
     title: 'Learning Vue.js 3',
     content: 'I am learning Vue.js 3 with the composition API. It is great!',
     likes: 10,
-    hashtags: [
+    tags: [
       'vue',
       'javascript',
       'composition api'
@@ -17,7 +17,7 @@ export let testPosts = [
     title: 'Learning Vuex',
     content: 'Vuex is a state management solution for Vue. It allows you to logically separate entities into modules.',
     likes: 14,
-    hashtags: [
+    tags: [
       'vue',
       'vuex',
       'flux'
@@ -30,7 +30,7 @@ export let testPosts = [
     title: 'Routing with Vue Router',
     content: 'I am creating a complex front-end app using Vue Router.',
     likes: 15,
-    hashtags: [
+    tags: [
       'vue',
       'vue-router'
     ],
@@ -42,7 +42,7 @@ export let testPosts = [
     title: 'Testing Vue Apps',
     content: 'I am writing some tests for my application using Vue Test Utils. Testing is critical by often overlooked due to complexity or time constraints.',
     likes: 30,
-    hashtags: [
+    tags: [
       'vue',
       'javascript',
       'testing'

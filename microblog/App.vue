@@ -77,15 +77,6 @@ export default {
     const showAddForm = ref(false)
     const tagString = ref(null)
 
-    const editPost = reactive({
-        id: null,
-        title: "fake",
-        content: null,
-        likes: 0,
-        hashtags: [],
-        isLiked: false
-    })
-
     const handleInput = ($event) => {
       store.setHashtag($event.target.value)
     }
@@ -97,6 +88,15 @@ export default {
     const add = () => {
         showAddForm.value = true //double check if this is needed
     }
+
+    const editPost = reactive({
+        id: null,
+        title: "fake",
+        content: null,
+        likes: 0,
+        hashtags: [],
+        isLiked: false
+    })    
 
     const save = () => {
         editPost.id = store.posts.length + 1
@@ -113,21 +113,22 @@ export default {
         const sanitizedTag = tag.replace(/\s/g, "")
         let tagArray = sanitizedTag.split(",")
         editPost.hashtags = tagArray
-
     }
 
     return {
       showAddForm,
       tagString,
-      filteredPosts: computed(() => store.posts),
-      currentTag: computed(() => store.state.currentTag),
+
       handleInput,
       reset,
       add,
       save,
       cancel,
       editPost,
-      tagParser
+      tagParser,
+
+      filteredPosts: computed(() => store.posts),
+      currentTag: computed(() => store.state.currentTag),
     }
   }
 }
@@ -156,6 +157,7 @@ input {
   margin: 30px;
   border-radius: 20px;
   border: 1px;
+  font-family: Arial, sans-serif; 
 }
 
 input[type=search]::-webkit-search-cancel-button {
@@ -170,17 +172,16 @@ input:hover {
     border: 1px solid;
 }
 
-.reset {
+.reset, .add {
   background-color: #529ECC;
-  color: black;
+  color: white;
   font-family: Arial, sans-serif; 
   font-size: 18px;
   font-weight: bold;
   padding: 5px 5px 5px 5px;
-  margin: 30px;
+  margin: 30px 0 0 0;
   border-radius: 20px;
   border: 1px;
-  text-align: center;
   width: 120px;
   height: 40px;
 }
