@@ -1,6 +1,6 @@
 <template>
   <div>{{ post.likes }}</div>
-  <button @click="handleLike">❤️ Like</button>
+  <button @click="handleLike"></button>
   <hr />
   <hashtag
     v-for="hashtag in post.hashtags"
@@ -19,11 +19,7 @@ export default {
   },
   props: {
     post: {
-      // id
-      // title
-      // content
-      // likes
-      // hashtags
+      // id, title, content, likes, hashtags
       type: Object
     }
   },

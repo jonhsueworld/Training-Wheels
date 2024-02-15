@@ -3,6 +3,7 @@ import { testPosts } from './testPosts.js'
 
 class Store {
   constructor() {
+    testPosts.forEach(t => t.context = t.title + t.content)
     this.state = reactive({
       posts: testPosts,
       currentTag: null
@@ -19,7 +20,7 @@ class Store {
     }
 
     return store.state.posts.filter(post => 
-      post.hashtags.includes(store.state.currentTag)
+      post.hashtags.includes(store.state.currentTag) || (post.content).toUpperCase().includes((store.state.currentTag).toUpperCase())
     )
   }
 
@@ -32,8 +33,29 @@ class Store {
       return
     }
 
-    thePost.likes++
+    thePost.isLiked = !thePost.isLiked
+    if (thePost.isLiked) {
+        thePost.likes++
+    }
+    else {
+        thePost.likes--
+    }
   }
+
+  addPost(post) {
+    this.posts.push(
+        {
+            id: post.id,
+            title: post.title,
+            content: post.content,
+            likes: post.likes,
+            hashtags: post.hashtags,
+            isLiked: post.isLiked
+        }
+    )
+    console.log(testPosts)
+  }
+
 }
 
 export const store = new Store()

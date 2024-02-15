@@ -1,4 +1,4 @@
-export const testPosts = [
+export let testPosts = [
   {
     id: 1,
     title: 'Learning Vue.js 3',
@@ -8,7 +8,8 @@ export const testPosts = [
       'vue',
       'javascript',
       'composition api'
-    ]
+    ],
+    isLiked: false
   },
   
   {
@@ -20,7 +21,8 @@ export const testPosts = [
       'vue',
       'vuex',
       'flux'
-    ]
+    ],
+    isLiked: false
   },
   
   {
@@ -31,7 +33,8 @@ export const testPosts = [
     hashtags: [
       'vue',
       'vue-router'
-    ]
+    ],
+    isLiked: false
   },
 
   {
@@ -43,6 +46,7 @@ export const testPosts = [
       'vue',
       'javascript',
       'testing'
-    ]
+    ],
+    isLiked: false
   }
 ]
