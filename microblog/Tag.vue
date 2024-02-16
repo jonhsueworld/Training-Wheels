@@ -34,5 +34,6 @@ export default {
 
 .tag:hover {
   color: cornflowerblue;
+  cursor: pointer;
 }
 </style>

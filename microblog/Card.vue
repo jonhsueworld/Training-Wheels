@@ -24,7 +24,6 @@ export default {
   border-radius: 8px;
   margin: 0 10px;
   max-width: 260px;
-  cursor: pointer;
   transition: 0.2s;
 }
 .title, .content, .description {

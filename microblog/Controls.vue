@@ -98,7 +98,6 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    cursor: pointer;
     opacity: 0;
     cursor: pointer;
     z-index: 2;

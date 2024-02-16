@@ -32,7 +32,7 @@
     </div>
       <button @click="reset" class="reset">Reset</button>
       <button @click="add" class="add"> Add </button>
-      <div v-if = "showAddForm"> 
+      <div class = "forms" v-if = "showAddForm"> 
         <my-input 
                 label="Title"
                 :modelValue="editPost.title"
@@ -46,19 +46,18 @@
         />
 
         <my-input 
-                label="tags"
+                label="Tags"
                 :modelValue="tagString"
                 @update="tagString = $event"
         />
         
-
-
-        <button @click ="save"> Save</button>
-        <button @click="cancel"> Cancel</button>
+        
+        <br><button class ="save" @click ="save"> Save</button> <br>
+        <button class = "cancel" @click="cancel"> Cancel</button>
       </div>
   </div>
 </template>
-                <!-- hashtag -> app -->
+
 <script>
 import { computed, ref, reactive } from 'vue'
 import { store } from './store.js'
@@ -78,15 +77,22 @@ export default {
     const tagString = ref(null)
 
     const handleInput = ($event) => {
-      store.setHashtag($event.target.value)
+      store.setTag($event.target.value)
     }
 
-    const reset = () => { //fix pls ur cheating
+    const reset = () => { //working but temporary
         window.location.href=window.location.href
     }
 
     const add = () => {
-        showAddForm.value = true //double check if this is needed
+        showAddForm.value = true
+    }
+
+    const save = () => {
+        editPost.id = store.posts.length
+        tagParser(tagString.value)
+        store.addPost(editPost)
+        cancel()
     }
 
     const editPost = reactive({
@@ -94,16 +100,9 @@ export default {
         title: "fake",
         content: null,
         likes: 0,
-        hashtags: [],
+        tags: [],
         isLiked: false
     })    
-
-    const save = () => {
-        editPost.id = store.posts.length + 1
-        tagParser(tagString.value)
-        store.addPost(editPost)
-        console.log(editPost, tagString.value)
-    }
 
     const cancel = () => {
         showAddForm.value = false
@@ -112,7 +111,7 @@ export default {
     const tagParser = (tag) => {
         const sanitizedTag = tag.replace(/\s/g, "")
         let tagArray = sanitizedTag.split(",")
-        editPost.hashtags = tagArray
+        editPost.tags = tagArray
     }
 
     return {
@@ -172,22 +171,43 @@ input:hover {
     border: 1px solid;
 }
 
-.reset, .add {
+.reset, .add, .save, .cancel {
   background-color: #529ECC;
   color: white;
   font-family: Arial, sans-serif; 
   font-size: 18px;
   font-weight: bold;
   padding: 5px 5px 5px 5px;
-  margin: 30px 0 0 0;
+  margin: 20px 0 0 0;
   border-radius: 20px;
   border: 1px;
   width: 120px;
   height: 40px;
 }
 
-.reset:hover {
+.reset:hover, .add:hover {
     opacity: 0.9;
+    cursor: pointer;
+}
+
+.add {
+  position: absolute;
+  left: 90%;
+  top: 90%;
+}
+
+.reset {
+  position: absolute;
+  left: 5%;
+  top: 90%;
+}
+
+.forms {
+    width: 100%;
+    color: silver;
+    margin: 20x;
+    padding: 20px;
+    text-align: center;
 }
 
 #wrapper {

@@ -45,7 +45,7 @@ class Store {
   addPost(post) {
     this.posts.push(
         {
-            id: post.id,
+            id: post.id + 1,
             title: post.title,
             content: post.content,
             likes: post.likes,
